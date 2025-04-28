@@ -1,24 +1,49 @@
 {
-  "name": "nextjs",
+  "name": "asycuda-autofill",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:e2e": "playwright test",
+    "test:smoke": "playwright test e2e/smoke-tests.spec.ts",
+    "test:e2e:ui": "playwright test --ui",
+    "validate:xml": "node scripts/validate-xml.js",
+    "optimize": "node scripts/optimize-performance.js",
+    "optimize:fix": "node scripts/optimize-performance.js --fix"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.1"
+    "@prisma/client": "^5.10.0",
+    "ag-grid-community": "^31.0.1",
+    "ag-grid-react": "^31.0.1",
+    "next": "14.1.0",
+    "next-auth": "^4.24.11",
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^6.10.1",
+    "puppeteer": "^24.7.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sqlite3": "^5.1.7",
+    "xlsx": "^0.18.5",
+    "xmlbuilder2": "^3.1.1"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "@playwright/test": "^1.40.0",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
+    "jest": "^29.7.0",
+    "postcss": "^8.4.33",
+    "prisma": "^5.10.0",
+    "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.1.1",
+    "typescript": "5.8.3"
   }
 }
