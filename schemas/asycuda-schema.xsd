@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://www.asycuda.org/schemas/declaration"
+           xmlns:asc="http://www.asycuda.org/schemas/declaration"
+           elementFormDefault="qualified">
+
+  <!-- Root element for ASYCUDA Single Administrative Document (SAD) -->
+  <xs:element name="ASYCUDADeclaration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DeclarationHeader" type="asc:DeclarationHeaderType"/>
+        <xs:element name="DeclarationItems" type="asc:DeclarationItemsType"/>
+        <xs:element name="DeclarationTotals" type="asc:DeclarationTotalsType"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required"/>
+      <xs:attribute name="declarationType" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Declaration Header Type -->
+  <xs:complexType name="DeclarationHeaderType">
+    <xs:sequence>
+      <xs:element name="DeclarationOffice" type="xs:string"/>
+      <xs:element name="DeclarationNumber" type="xs:string"/>
+      <xs:element name="DeclarationDate" type="xs:date"/>
+      <xs:element name="ImporterDetails" type="asc:PartyType"/>
+      <xs:element name="ExporterDetails" type="asc:PartyType"/>
+      <xs:element name="AgentDetails" type="asc:PartyType" minOccurs="0"/>
+      <xs:element name="TransportDetails" type="asc:TransportType"/>
+      <xs:element name="CountryOfOrigin" type="xs:string"/>
+      <xs:element name="CountryOfDestination" type="xs:string"/>
+      <xs:element name="CurrencyCode" type="xs:string"/>
+      <xs:element name="ExchangeRate" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Party Type for Importer, Exporter, Agent -->
+  <xs:complexType name="PartyType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Address" type="xs:string"/>
+      <xs:element name="City" type="xs:string"/>
+      <xs:element name="Country" type="xs:string"/>
+      <xs:element name="TaxID" type="xs:string" minOccurs="0"/>
+      <xs:element name="ContactInfo" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="partyID" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Transport Type -->
+  <xs:complexType name="TransportType">
+    <xs:sequence>
+      <xs:element name="ModeOfTransport" type="xs:string"/>
+      <xs:element name="TransportIdentification" type="xs:string"/>
+      <xs:element name="TransportNationality" type="xs:string"/>
+      <xs:element name="ContainerIndicator" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Declaration Items Type -->
+  <xs:complexType name="DeclarationItemsType">
+    <xs:sequence>
+      <xs:element name="Item" type="asc:ItemType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="itemCount" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <!-- Item Type -->
+  <xs:complexType name="ItemType">
+    <xs:sequence>
+      <xs:element name="ItemNumber" type="xs:integer"/>
+      <xs:element name="HSCode" type="xs:string"/>
+      <xs:element name="Description" type="xs:string"/>
+      <xs:element name="CountryOfOrigin" type="xs:string"/>
+      <xs:element name="GrossMass" type="xs:decimal"/>
+      <xs:element name="NetMass" type="xs:decimal"/>
+      <xs:element name="SupplementaryUnits" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="UnitOfMeasure" type="xs:string" minOccurs="0"/>
+      <xs:element name="CustomsValue" type="xs:decimal"/>
+      <xs:element name="StatisticalValue" type="xs:decimal"/>
+      <xs:element name="Taxes" type="asc:TaxesType"/>
+    </xs:sequence>
+    <xs:attribute name="itemID" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Taxes Type -->
+  <xs:complexType name="TaxesType">
+    <xs:sequence>
+      <xs:element name="Tax" type="asc:TaxType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="taxCount" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <!-- Tax Type -->
+  <xs:complexType name="TaxType">
+    <xs:sequence>
+      <xs:element name="TaxType" type="xs:string"/>
+      <xs:element name="TaxBase" type="xs:decimal"/>
+      <xs:element name="TaxRate" type="xs:decimal"/>
+      <xs:element name="TaxAmount" type="xs:decimal"/>
+    </xs:sequence>
+    <xs:attribute name="taxID" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Declaration Totals Type -->
+  <xs:complexType name="DeclarationTotalsType">
+    <xs:sequence>
+      <xs:element name="TotalGrossMass" type="xs:decimal"/>
+      <xs:element name="TotalNetMass" type="xs:decimal"/>
+      <xs:element name="TotalCustomsValue" type="xs:decimal"/>
+      <xs:element name="TotalStatisticalValue" type="xs:decimal"/>
+      <xs:element name="TotalTaxes" type="xs:decimal"/>
+      <xs:element name="TotalDuty" type="xs:decimal"/>
+      <xs:element name="TotalVAT" type="xs:decimal"/>
+      <xs:element name="TotalExcise" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="TotalOtherTaxes" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

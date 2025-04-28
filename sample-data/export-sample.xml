@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<asc:ASYCUDADeclaration xmlns:asc="http://www.asycuda.org/schemas/declaration"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://www.asycuda.org/schemas/declaration ../schemas/asycuda-schema.xsd"
+                      version="1.0"
+                      declarationType="IM4">
+  <asc:DeclarationHeader>
+    <asc:DeclarationOffice>KGSTON</asc:DeclarationOffice>
+    <asc:DeclarationNumber>JM202504280001</asc:DeclarationNumber>
+    <asc:DeclarationDate>2025-04-28</asc:DeclarationDate>
+    <asc:ImporterDetails partyID="IMP12345">
+      <asc:Name>Jamaica Import Company Ltd.</asc:Name>
+      <asc:Address>123 Harbor Street</asc:Address>
+      <asc:City>Kingston</asc:City>
+      <asc:Country>JM</asc:Country>
+      <asc:TaxID>JM12345678</asc:TaxID>
+      <asc:ContactInfo>contact@jamaicaimport.com</asc:ContactInfo>
+    </asc:ImporterDetails>
+    <asc:ExporterDetails partyID="EXP54321">
+      <asc:Name>Global Furniture Exports Inc.</asc:Name>
+      <asc:Address>789 Export Avenue</asc:Address>
+      <asc:City>Miami</asc:City>
+      <asc:Country>US</asc:Country>
+      <asc:TaxID>US87654321</asc:TaxID>
+    </asc:ExporterDetails>
+    <asc:AgentDetails partyID="AGT98765">
+      <asc:Name>Caribbean Customs Brokers</asc:Name>
+      <asc:Address>456 Customs Road</asc:Address>
+      <asc:City>Kingston</asc:City>
+      <asc:Country>JM</asc:Country>
+      <asc:TaxID>JM98765432</asc:TaxID>
+      <asc:ContactInfo>broker@caribcustoms.com</asc:ContactInfo>
+    </asc:AgentDetails>
+    <asc:TransportDetails>
+      <asc:ModeOfTransport>1</asc:ModeOfTransport>
+      <asc:TransportIdentification>MAEU1234567</asc:TransportIdentification>
+      <asc:TransportNationality>PA</asc:TransportNationality>
+      <asc:ContainerIndicator>true</asc:ContainerIndicator>
+    </asc:TransportDetails>
+    <asc:CountryOfOrigin>US</asc:CountryOfOrigin>
+    <asc:CountryOfDestination>JM</asc:CountryOfDestination>
+    <asc:CurrencyCode>USD</asc:CurrencyCode>
+    <asc:ExchangeRate>155.50</asc:ExchangeRate>
+  </asc:DeclarationHeader>
+  
+  <asc:DeclarationItems itemCount="2">
+    <asc:Item itemID="ITEM001">
+      <asc:ItemNumber>1</asc:ItemNumber>
+      <asc:HSCode>9403.50.00</asc:HSCode>
+      <asc:Description>Wooden furniture for bedroom - Queen size bed frame</asc:Description>
+      <asc:CountryOfOrigin>US</asc:CountryOfOrigin>
+      <asc:GrossMass>95.50</asc:GrossMass>
+      <asc:NetMass>85.00</asc:NetMass>
+      <asc:SupplementaryUnits>1</asc:SupplementaryUnits>
+      <asc:UnitOfMeasure>PCE</asc:UnitOfMeasure>
+      <asc:CustomsValue>1200.00</asc:CustomsValue>
+      <asc:StatisticalValue>1200.00</asc:StatisticalValue>
+      <asc:Taxes taxCount="2">
+        <asc:Tax taxID="DUTY001">
+          <asc:TaxType>DUTY</asc:TaxType>
+          <asc:TaxBase>1200.00</asc:TaxBase>
+          <asc:TaxRate>20.00</asc:TaxRate>
+          <asc:TaxAmount>240.00</asc:TaxAmount>
+        </asc:Tax>
+        <asc:Tax taxID="VAT001">
+          <asc:TaxType>VAT</asc:TaxType>
+          <asc:TaxBase>1440.00</asc:TaxBase>
+          <asc:TaxRate>15.00</asc:TaxRate>
+          <asc:TaxAmount>216.00</asc:TaxAmount>
+        </asc:Tax>
+      </asc:Taxes>
+    </asc:Item>
+    <asc:Item itemID="ITEM002">
+      <asc:ItemNumber>2</asc:ItemNumber>
+      <asc:HSCode>9403.60.90</asc:HSCode>
+      <asc:Description>Wooden furniture - Dining table with 6 chairs</asc:Description>
+      <asc:CountryOfOrigin>US</asc:CountryOfOrigin>
+      <asc:GrossMass>120.00</asc:GrossMass>
+      <asc:NetMass>105.00</asc:NetMass>
+      <asc:SupplementaryUnits>1</asc:SupplementaryUnits>
+      <asc:UnitOfMeasure>SET</asc:UnitOfMeasure>
+      <asc:CustomsValue>1800.00</asc:CustomsValue>
+      <asc:StatisticalValue>1800.00</asc:StatisticalValue>
+      <asc:Taxes taxCount="2">
+        <asc:Tax taxID="DUTY002">
+          <asc:TaxType>DUTY</asc:TaxType>
+          <asc:TaxBase>1800.00</asc:TaxBase>
+          <asc:TaxRate>20.00</asc:TaxRate>
+          <asc:TaxAmount>360.00</asc:TaxAmount>
+        </asc:Tax>
+        <asc:Tax taxID="VAT002">
+          <asc:TaxType>VAT</asc:TaxType>
+          <asc:TaxBase>2160.00</asc:TaxBase>
+          <asc:TaxRate>15.00</asc:TaxRate>
+          <asc:TaxAmount>324.00</asc:TaxAmount>
+        </asc:Tax>
+      </asc:Taxes>
+    </asc:Item>
+  </asc:DeclarationItems>
+  
+  <asc:DeclarationTotals>
+    <asc:TotalGrossMass>215.50</asc:TotalGrossMass>
+    <asc:TotalNetMass>190.00</asc:TotalNetMass>
+    <asc:TotalCustomsValue>3000.00</asc:TotalCustomsValue>
+    <asc:TotalStatisticalValue>3000.00</asc:TotalStatisticalValue>
+    <asc:TotalTaxes>1140.00</asc:TotalTaxes>
+    <asc:TotalDuty>600.00</asc:TotalDuty>
+    <asc:TotalVAT>540.00</asc:TotalVAT>
+    <asc:TotalExcise>0.00</asc:TotalExcise>
+    <asc:TotalOtherTaxes>0.00</asc:TotalOtherTaxes>
+  </asc:DeclarationTotals>
+</asc:ASYCUDADeclaration>
