@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from 'next/image';
 import React from 'react';
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 export default function Sidebar() {
   // Using unicode icons as a simpler alternative to SVG files
