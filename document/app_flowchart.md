@@ -1,0 +1,36 @@
+flowchart TD
+    A[Welcome Page] --> B{User Type}
+    B -->|New| C[Sign Up Form]
+    B -->|Returning| D[Sign In Form]
+    C --> E[Email Verification]
+    E --> F[MFA Setup Optional]
+    F --> G[Dashboard]
+    D --> G
+    G --> H[Create Shipment]
+    H --> I[Import CSV XLSX or Manual Entry]
+    I --> J[Auto Save and Audit Tag]
+    J --> K[Classify Items]
+    K --> L[High Confidence Items]
+    K --> M[Flag Low Confidence Items]
+    L --> N[Submit for Review]
+    M --> N
+    N --> O[Review Page]
+    O --> P[Approve or Adjust Codes]
+    P --> Q[Finalize Review]
+    Q --> R[Generate Documents]
+    R --> S[Download XML and PDF]
+    S --> T{Submission Method}
+    T -->|API| U[Submit via API]
+    T -->|SFTP| V[Submit via SFTP]
+    U --> W[Update Submission Status]
+    V --> W
+    W --> X[Shipments List]
+    X --> Y[Shipment Details Tabs]
+    Y --> Z[Overview Docs History Integrations]
+    G --> AA[Settings]
+    AA --> AB[Account Details]
+    AA --> AC[Notification Preferences]
+    AA --> AD[Admin Console]
+    AD --> AE[User Management]
+    AD --> AF[Billing]
+    AD --> AG[System Configuration]

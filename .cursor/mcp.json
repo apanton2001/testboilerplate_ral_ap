@@ -1,0 +1,46 @@
+{
+  "mcpServers": {
+    "@21st-dev/magic": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@21st-dev/magic@latest",
+        "API_KEY=\"33323b359219eab0a103a8ed2e164174e1ac260d79dc7593aef3c43074545e4b\""
+      ]
+    },
+    "hyperbrowser": {
+      "command": "npx",
+      "args": ["-y", "hyperbrowser-mcp"],
+      "env": {
+        "HYPERBROWSER_API_KEY": "hb_fe811dd8edd1dedce3f299409412"
+      }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "shrimp-task-manager": {
+      "command": "npx",
+      "args": ["-y", "@smithery/cli", "serve", "@cjo4m06/mcp-shrimp-task-manager"],
+      "env": {
+        "SMITHERY_API_KEY": "463a0e23-2037-4ed9-9cff-ac796acf097e"
+      }
+    },
+    "hyperbrowser-smithery": {
+      "command": "npx",
+      "args": ["-y", "@smithery/cli", "serve", "@hyperbrowserai/mcp"],
+      "env": {
+        "SMITHERY_API_KEY": "463a0e23-2037-4ed9-9cff-ac796acf097e"
+      }
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    }
+  }
+} 

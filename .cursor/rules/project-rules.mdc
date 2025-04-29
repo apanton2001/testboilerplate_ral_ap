@@ -1,0 +1,196 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## Project Overview
+
+*   **Type:** cursor_project_rules
+*   **Description:** The project focuses on addressing the significant costs, delays, and errors that businesses face when dealing with customs brokers to complete customs documentation and tariff classifications. Key issues include the time-consuming nature of filling out customs reports, frequent inaccuracies in form codes and tariff classifications, and the high fees paid to customs brokers—sometimes reaching up to half a million dollars monthly.
+*   **Primary Goal:** 50% reduction in customs preparation time, savings up to $500 per shipment, and 99.8% accuracy in HS code assignment.
+
+## Project Structure
+
+### Framework-Specific Routing
+
+*   **Directory Rules:**
+
+    *   Next.js (Pages Router): `pages/[route].tsx` pattern
+    *   Next.js API Routes: `pages/api/[route].ts`
+    *   Example 1: “Next.js (Pages Router)” → `pages/[route].tsx` pattern
+    *   Example 2: “Next.js API Routes” → `pages/api/[route].ts`
+
+### Core Directories
+
+*   **Versioned Structure:**
+
+    *   `pages`: Next.js Pages Router components
+    *   `pages/api`: Next.js API route handlers
+    *   `public`: Static assets (images, favicon)
+    *   `src/components`: Reusable React UI components
+    *   `src/lib`: Shared utility functions (DB clients, API wrappers)
+    *   `styles`: Global and module CSS/SCSS files
+
+### Key Files
+
+*   **Stack-Versioned Patterns:**
+
+    *   `pages/_app.tsx`: Next.js custom App for global CSS and context providers
+    *   `pages/_document.tsx`: Next.js custom Document for initial HTML markup
+    *   `pages/login.tsx` & `pages/signup.tsx`: Authentication pages
+    *   `pages/dashboard.tsx`: Main dashboard entry point
+    *   `pages/api/auth/[...nextauth].ts`: NextAuth.js configuration
+
+## Tech Stack Rules
+
+*   **Version Enforcement:**
+
+    *   next@13: Pages Router required, no `app/` directory
+    *   react@18: Use React 18 features (Concurrent Mode)
+    *   node@16: LTS runtime, avoid deprecated APIs
+    *   jest@29: Use `jest.config.ts` and `ts-jest` for TypeScript
+    *   <playwright@1.x>: Use `playwright.config.ts` and parallel test execution
+    *   ag-grid-react@28: Enable enterprise features only with valid license
+    *   puppeteer@20: Run in headless mode in CI, call `browser.disconnect()` on finish
+    *   xmlbuilder2@3: Use stateless builder for high-throughput XML
+    *   nextauth@4: Use new v4 route handler APIs
+    *   stripe@10: Use typed Stripe SDK and validate webhooks
+
+## PRD Compliance
+
+*   **Non-Negotiable:**
+
+    *   "50% reduction in customs prep time": Grid load and HS classification must complete within 2 seconds for 1,000 rows
+    *   "99.8% accuracy in HS code assignment": All automated classifications must log confidence scores and flag any <95% for manual review
+    *   "Five-year retention": Data must be stored and retrievable for at least five years with audit logs
+
+## App Flow Integration
+
+*   **Stack-Aligned Flow:**
+
+    *   Next.js Pages Router Auth Flow → `pages/api/auth/[...nextauth].ts` with NextAuth.js, login UI at `pages/login.tsx`
+    *   Next.js Pages Router Dashboard → `pages/dashboard.tsx` using `getServerSideProps` for live data
+    *   Next.js API Route for Classification → `pages/api/classify.ts` calls ContextGem API and caches to Redis
+    *   File-Based Routing for Shipments → `pages/shipments/[id].tsx` for detailed shipment views
+
+## Best Practices
+
+*   React
+
+    *   Use functional components with Hooks
+    *   Memoize heavy calculations with `React.memo` and `useMemo`
+    *   Enforce strict typing with TypeScript
+
+*   Next.js
+
+    *   Prefer static generation (ISR) over SSR when possible
+    *   Organize pages by feature within the `pages/` directory
+    *   Leverage built-in `Image` and `Script` components for performance
+
+*   AG Grid
+
+    *   Enable row and column virtualization for large datasets
+    *   Use custom cell renderers instead of inline styling
+    *   Manage grid state in React context or Redux
+
+*   Node.js
+
+    *   Centralize error handling in Express middleware
+    *   Validate inputs with a schema library (Zod or Joi)
+    *   Log errors and performance metrics with Winston or Pino
+
+*   xmlbuilder2
+
+    *   Stream large XML documents rather than build in-memory
+    *   Validate output against ASYCUDA schemas before submission
+
+*   Puppeteer
+
+    *   Set explicit navigation timeouts
+    *   Capture screenshots on errors for debugging
+
+*   ContextGem API
+
+    *   Implement retry with exponential backoff
+    *   Cache results in Redis and expire on tariff updates
+
+*   PostgreSQL
+
+    *   Use parameterized queries or Prisma ORM
+    *   Index frequently queried columns (HS code, shipment ID)
+
+*   Redis
+
+    *   Set TTL on cache entries and evict stale data after updates
+    *   Monitor memory usage and configure eviction policy
+
+*   GitHub Actions
+
+    *   Separate jobs for linting, testing, and deployment
+    *   Store secrets securely in GitHub Secrets
+
+*   Vercel
+
+    *   Use environment variables for all secrets
+    *   Enable Preview Deployments for pull requests
+
+*   Jest
+
+    *   Cover all utility functions and UI components
+    *   Enforce coverage thresholds in CI
+
+*   Playwright
+
+    *   Write end-to-end tests for critical user flows
+    *   Run across Chromium, Firefox, and WebKit in parallel
+
+*   Stripe
+
+    *   Secure webhook endpoints and validate signatures
+    *   Use idempotency keys for safe retries
+
+*   Resend
+
+    *   Use templated emails for consistency
+    *   Monitor delivery and bounce rates
+
+*   NextAuth.js
+
+    *   Store session roles in JWT callbacks
+    *   Secure cookies with `HttpOnly` and `SameSite` flags
+
+*   QuickBooks API
+
+    *   Batch API calls when possible to minimize rate usage
+    *   Handle OAuth token refresh automatically
+
+*   Freight-forwarder API
+
+    *   Poll with exponential backoff for shipment status
+    *   Normalize external data to internal models
+
+## Rules
+
+*   Derive folder and file patterns directly from techStackDoc versions.
+*   If using Next.js Pages Router: use `pages/*.tsx` for routes and `pages/api/*.ts` for API handlers.
+*   Never mix `pages/` and `app/` directories—stick to one router paradigm.
+*   Cache HS classification calls in Redis with a TTL matching tariff update cadence.
+*   Enforce role-based access in Next.js API middleware on every route.
+*   Implement five-year data retention with scheduled archival jobs in the database.
+*   Prefix all client-exposed env vars with `NEXT_PUBLIC_` and secure the rest server-side.
+
+## Rules Metrics
+
+Add the following instruction for analyzing rules usage:
+
+Before starting the project development, create a metrics file in the root of the project called
+
+`cursor_metrics.md`.
+
+### Instructions:
+
+*   Each time a cursor rule is used as context, update `cursor_metrics.md`.
+*   Use the following format for `cursor_metrics.md`:
+
+`# Rules Metrics ## Usage The number of times rules is used as context * rule-name.mdc: 5 * another-rule.mdc: 2 * ...other rules`
+
